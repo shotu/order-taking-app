@@ -24,7 +24,6 @@ class Dashboard extends Component {
       check: false,
       collapse: false
     };
-    //this.callData = this.callData.bind(this);
   }
 
   async componentDidMount() {
@@ -65,6 +64,7 @@ class Dashboard extends Component {
     });
     this.setState({ addedItem, total_sum: sum });
   };
+
   removeData = index => {
     var sum = 0;
     const { addedItem } = this.state;
@@ -102,7 +102,7 @@ class Dashboard extends Component {
       <div>
         <div>
           <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">Atri's Cafe</NavbarBrand>
+            <NavbarBrand href="/">Target's Cafe</NavbarBrand>
           </Navbar>
           <Row style={{ padding: "30px" }}>
             <Col md="6">
@@ -194,7 +194,7 @@ class Dashboard extends Component {
                     style={{ marginBottom: "10px" }}
                   />
                   <Button outline color="success" onClick={this.saveOrder}>
-                    SAVE ORDER
+                    Place order
                   </Button>{" "}
                 </div>
               )}

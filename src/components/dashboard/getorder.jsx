@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Table, Button, ListGroup, ListGroupItem } from "reactstrap";
+import { Row, Col, Table, ListGroup, ListGroupItem, Label } from "reactstrap";
 
 class GetOrder extends Component {
   constructor(props) {
@@ -9,11 +9,13 @@ class GetOrder extends Component {
       selected: 0
     };
   }
+
   async componentDidMount() {
     const data = await fetch("http://localhost:8090/pos/api/orders");
     const json = await data.json();
     this.setState({ orderData: json });
   }
+  
   async componentDidUpdate(prevProps, prevState) {
     if (this.props !== prevProps) {
       const data = await fetch("http://localhost:8090/pos/api/orders");
@@ -21,6 +23,7 @@ class GetOrder extends Component {
       this.setState({ orderData: json });
     }
   }
+
   selectedIndex = index => {
     this.setState({ selected: index });
   };
@@ -61,13 +64,19 @@ class GetOrder extends Component {
                   <tbody>
                     {orderData[selected].items.map((item, index) => {
                       return (
-                        <tr>
+                        
+                          <tr>
                           <th>{item.name}</th>
                           <th>{item.description}</th>
                           <th>{item.price}</th>
                         </tr>
                       );
                     })}
+                    <tr>
+                    <th> <Label for="Sum">Total Amount </Label></th>
+                    <th> </th>
+                    <th>{orderData[selected].amount} {} </th>
+                    </tr>  
                   </tbody>
                 </Table>
               </div>
