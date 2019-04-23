@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component} from "react";
 import {
   Table,
   Row,
@@ -24,7 +24,7 @@ class Dashboard extends Component {
       check: false,
       collapse: false
     };
-    this.callData = this.callData.bind(this);
+    //this.callData = this.callData.bind(this);
   }
 
   async componentDidMount() {
@@ -44,7 +44,7 @@ class Dashboard extends Component {
     this.setState({ [evt.target.name]: evt.target.value });
   };
 
-  async callData() {
+  callData=async()=> {
     const { search } = this.state;
     const data = await fetch(
       `http://localhost:8090/pos/api/items/suggest_items?search_name=${search}`
